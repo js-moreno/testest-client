@@ -28,6 +28,7 @@
               "src/assets"
             ],
             "styles": [
+              "src/custom-theme.sass",
               "src/styles.sass"
             ],
             "scripts": []
@@ -92,6 +93,7 @@
               "src/assets"
             ],
             "styles": [
+              "src/custom-theme.sass",
               "src/styles.sass"
             ],
             "scripts": []
@@ -123,6 +125,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "tsgtest-client"
+    }
+  },
+  "defaultProject": "tsgtest-client",
+  "cli": {
+    "analytics": false
+  }
 }
