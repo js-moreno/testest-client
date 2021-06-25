@@ -1,0 +1,31 @@
+<form>
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>XYZSoft</mat-card-title>
+            <small>
+                Ingresa con tu correo y contraseña
+            </small>
+        </mat-card-header>
+        <mat-card-content>
+            <div class="row">
+                <div class="col-xs">
+                    <mat-form-field>
+                        <input placeholder="Correo" formControlName="email" matInput type="email">
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs">
+                    <mat-form-field>
+                        <input placeholder="Contraseña" formControlName="password" matInput type="password">
+                    </mat-form-field>
+                </div>
+            </div>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-raised-button type="submit" color="primary">Ingresar</button>
+            <br><br>
+            <a href="/auth/register">¿Aun no tienes cuenta?</a>
+        </mat-card-actions>
+    </mat-card>
+</form>
