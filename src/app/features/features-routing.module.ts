@@ -6,21 +6,16 @@ import { CustomersComponent } from './components/customers/customers.component';
 const routes: Routes = [
   {
     path: '',
-    children: [
-      {
-        path: '',
-        redirectTo: 'customers',
-        pathMatch: 'full',
-      },
-      {
-        path: 'customers',
-        component: CustomersComponent,
-      },
-      {
-        path: 'credit-cards',
-        component: CreditCardsComponent,
-      },
-    ],
+    redirectTo: 'customers',
+    pathMatch: 'full',
+  },
+  {
+    path: 'customers',
+    component: CustomersComponent,
+  },
+  {
+    path: 'credit-cards',
+    component: CreditCardsComponent,
   },
 ];
 
