@@ -1,10 +1,14 @@
 <mat-toolbar color="primary" class="navbar" class="mat-elevation-z2">
 
-    <button routerLink="/" routerLinkActive="active"> XYZSoft </button>
+    <h2>XYZSoft</h2>
     <span class="spacer"></span>
-    <button mat-button>Clientes</button>
-    <button mat-button>Tarjetas</button>
-    <span class="spacer"></span>
+    <button mat-button routerLink="/customers" routerLinkActive="active">
+        Clientes
+    </button>
+    <button mat-button routerLink="/credit-cards" routerLinkActive="active">
+        Tarjetas de Credito
+    </button>
+    <span class=" spacer"></span>
     <button [matMenuTriggerFor]="menu" mat-icon-button aria-label="Session options">
         <mat-icon>person</mat-icon>
     </button>
@@ -12,5 +16,4 @@
         <button mat-menu-item>Perfil</button>
         <button mat-menu-item>Salir</button>
     </mat-menu>
-
 </mat-toolbar>
