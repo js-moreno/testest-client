@@ -21,6 +21,14 @@ export class OauthService {
     return this.http.post<any>(`${this.URL}o/token/`, form, this.urlHeader);
   }
 
+  requestRevokeToken(form: any): Observable<any> {
+    return this.http.post<any>(
+      `${this.URL}o/revoke_token/`,
+      form,
+      this.urlHeader
+    );
+  }
+
   getAccessTokenStored(): any {
     return localStorage.getItem('access_token');
   }

@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { OauthService } from 'src/app/core/services/oauth/oauth.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-header',
@@ -6,7 +9,22 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.sass'],
 })
 export class HeaderComponent implements OnInit {
-  constructor() {}
+  public params = new URLSearchParams();
+  private CLIENT_ID = environment.clientID;
 
-  ngOnInit(): void {}
+  constructor(private oauthService: OauthService, private router: Router) {}
+
+  ngOnInit(): void {
+    this.params.set('client_id', this.CLIENT_ID);
+    this.params.set('token', this.oauthService.getAccessTokenStored());
+  }
+
+  logout(): void {
+    this.oauthService
+      .requestRevokeToken(this.params.toString())
+      .subscribe(() => {
+        localStorage.clear();
+        this.router.navigate(['/auth']);
+      });
+  }
 }
