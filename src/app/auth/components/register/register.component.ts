@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { NavigationExtras, Router } from '@angular/router';
 import { UsersService } from 'src/app/core/services/users/users.service';
+import { ConfirmedValidator } from 'src/app/shared/validators/confirmed.validator';
 
 @Component({
   selector: 'app-register',
@@ -9,15 +10,20 @@ import { UsersService } from 'src/app/core/services/users/users.service';
   styleUrls: ['./register.component.sass'],
 })
 export class RegisterComponent implements OnInit {
-  form = this.formBuilder.group({
-    first_name: ['', [Validators.required, Validators.maxLength(100)]],
-    last_name: ['', [Validators.required, Validators.maxLength(100)]],
-    phone: ['', [Validators.pattern('^[0-9]*$'), , Validators.maxLength(50)]],
-    address: ['', Validators.maxLength(150)],
-    email: ['', [Validators.required, Validators.email]],
-    password: ['', [Validators.required, Validators.minLength(8)]],
-    // password_confirmation: ['', [Validators.required, Validators.minLength(8)]],
-  });
+  form = this.formBuilder.group(
+    {
+      first_name: ['', Validators.required],
+      last_name: ['', Validators.required],
+      phone: ['', Validators.pattern('^[0-9]*$')],
+      address: [''],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(8)]],
+      password_confirmation: ['', Validators.required],
+    },
+    {
+      validator: ConfirmedValidator('password', 'password_confirmation'),
+    }
+  );
   public error = null;
 
   constructor(
