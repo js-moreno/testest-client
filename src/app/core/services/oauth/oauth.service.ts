@@ -17,7 +17,16 @@ export class OauthService {
 
   constructor(private http: HttpClient) {}
 
-  get_access_token(form: any): Observable<any> {
+  requestAccessToken(form: any): Observable<any> {
     return this.http.post<any>(`${this.URL}o/token/`, form, this.urlHeader);
+  }
+
+  getAccessTokenStored(): any {
+    return localStorage.getItem('access_token');
+  }
+
+  hasToken(): any {
+    let token = this.getAccessTokenStored();
+    return token != null;
   }
 }

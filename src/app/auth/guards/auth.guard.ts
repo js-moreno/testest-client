@@ -7,13 +7,13 @@ import {
   Router,
 } from '@angular/router';
 import { Observable } from 'rxjs';
-import { TokenService } from 'src/app/core/services/token/token.service';
+import { OauthService } from 'src/app/core/services/oauth/oauth.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthGuard implements CanActivate {
-  constructor(private router: Router, private tokenService: TokenService) {}
+  constructor(private router: Router, private oauthService: OauthService) {}
 
   canActivate(
     next: ActivatedRouteSnapshot,
@@ -23,7 +23,7 @@ export class AuthGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    if (!this.tokenService.hasToken()) {
+    if (!this.oauthService.hasToken()) {
       this.router.navigate(['/auth']);
     }
     return true;

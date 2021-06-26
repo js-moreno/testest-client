@@ -1,4 +1,4 @@
-<form>
+<form [formGroup]="form" (submit)="register()">
     <mat-card>
         <mat-card-header>
             <mat-card-title>XYZSoft</mat-card-title>
@@ -7,24 +7,30 @@
             </small>
         </mat-card-header>
         <mat-card-content>
-            <div class="row">
+            <div class=" row">
                 <div class="col-xs">
                     <mat-form-field>
-                        <input placeholder="Nombre" formControlName="firstName" matInput type="text">
+                        <input placeholder="Nombre" formControlName="first_name" matInput required type="text">
+                        <mat-error *ngIf="form.get('first_name').hasError('required')">Este campo es requerido
+                        </mat-error>
+
                     </mat-form-field>
                 </div>
             </div>
             <div class="row">
                 <div class="col-xs">
                     <mat-form-field>
-                        <input placeholder="Apellido" formControlName="lastName" matInput type="text">
+                        <input placeholder="Apellido" formControlName="last_name" matInput required type="text">
+                        <mat-error *ngIf="form.get('last_name').hasError('required')">Este campo es requerido
+                        </mat-error>
                     </mat-form-field>
                 </div>
             </div>
             <div class="row">
                 <div class="col-xs">
                     <mat-form-field>
-                        <input placeholder="Correo" formControlName="email" matInput type="email">
+                        <input placeholder="Correo" formControlName="email" matInput required type="email">
+                        <mat-error *ngIf="form.get('email').hasError('required')">Este campo es requerido</mat-error>
                     </mat-form-field>
                 </div>
             </div>
@@ -45,10 +51,21 @@
             <div class="row">
                 <div class="col-xs">
                     <mat-form-field>
-                        <input placeholder="Contraseña" formControlName="password" matInput type="password">
+                        <input placeholder="Contraseña" formControlName="password" matInput required type="password">
+                        <mat-error *ngIf="form.get('password').hasError('required')">Este campo es requerido</mat-error>
                     </mat-form-field>
                 </div>
             </div>
+            <!-- <div class="row">
+                <div class="col-xs">
+                    <mat-form-field>
+                        <input placeholder="Confirmación Contraseña" formControlName="passwordConfirmation" matInput
+                            required type="password">
+                        <mat-error *ngIf="form.get('passwordConfirmation').hasError('required')">Este campo es requerido
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            </div> -->
         </mat-card-content>
         <mat-card-actions>
             <button mat-raised-button type="submit" color="primary">Registro</button>
