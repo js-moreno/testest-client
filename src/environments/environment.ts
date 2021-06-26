@@ -3,7 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  serverURL: 'https://tsgtest-server.herokuapp.com/',
+  clientID: 'zeqnuAGcK81OaakjqOf2WgUVIjEuWkH4rZkK9hnu',
 };
 
 /*

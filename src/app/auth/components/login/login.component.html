@@ -1,4 +1,4 @@
-<form>
+<form [formGroup]="form" (submit)="login()">
     <mat-card>
         <mat-card-header>
             <mat-card-title>XYZSoft</mat-card-title>
@@ -11,6 +11,10 @@
                 <div class="col-xs">
                     <mat-form-field>
                         <input placeholder="Correo" formControlName="email" matInput type="email">
+                        <mat-error *ngIf="form.get('email').hasError('required')">Este campo es requerido</mat-error>
+                        <mat-error *ngIf="form.get('email').hasError('email')">Debes ingresar un correo
+                            electrónico</mat-error>
+
                     </mat-form-field>
                 </div>
             </div>
@@ -18,13 +22,18 @@
                 <div class="col-xs">
                     <mat-form-field>
                         <input placeholder="Contraseña" formControlName="password" matInput type="password">
+                        <mat-error *ngIf="form.get('password').hasError('required')">Este campo es requerido</mat-error>
                     </mat-form-field>
                 </div>
             </div>
+
         </mat-card-content>
         <mat-card-actions>
             <button mat-raised-button type="submit" color="primary">Ingresar</button>
-            <br><br>
+            <br>
+            <br>
+            <mat-error *ngIf="error">{{error}}</mat-error>
+            <br>
             <a routerLink="/auth/register">¿Aun no tienes cuenta?</a>
         </mat-card-actions>
     </mat-card>
