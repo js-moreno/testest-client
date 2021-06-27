@@ -16,14 +16,14 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.params.set('client_id', this.CLIENT_ID);
-    this.params.set('token', this.oauthService.getAccessTokenStored());
+    this.params.set('token', this.oauthService.getAccessToken());
   }
 
   logout(): void {
     this.oauthService
       .requestRevokeToken(this.params.toString())
       .subscribe(() => {
-        localStorage.clear();
+        this.oauthService.deleteAccessToken();
         this.router.navigate(['/auth']);
       });
   }

@@ -4,10 +4,11 @@ import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
 import { MaterialModule } from '../material/material.module';
 import { RouterModule } from '@angular/router';
+import { SiNoPipe } from './pipes/si-no.pipe';
 
 @NgModule({
-  declarations: [FooterComponent, HeaderComponent],
+  declarations: [FooterComponent, HeaderComponent, SiNoPipe],
   imports: [CommonModule, MaterialModule, RouterModule],
-  exports: [HeaderComponent, FooterComponent],
+  exports: [HeaderComponent, FooterComponent, SiNoPipe],
 })
 export class SharedModule {}

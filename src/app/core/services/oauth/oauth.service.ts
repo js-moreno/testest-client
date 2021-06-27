@@ -29,12 +29,17 @@ export class OauthService {
     );
   }
 
-  getAccessTokenStored(): any {
+  getAccessToken(): any {
     return localStorage.getItem('access_token');
   }
 
   hasToken(): any {
-    let token = this.getAccessTokenStored();
+    let token = this.getAccessToken();
     return token != null;
+  }
+
+  deleteAccessToken(): any {
+    localStorage.clear();
+    return true;
   }
 }
