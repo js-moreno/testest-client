@@ -11,7 +11,7 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "~9.1.1",
+    "@angular/animations": "^9.1.13",
     "@angular/cdk": "^9.2.4",
     "@angular/common": "~9.1.1",
     "@angular/compiler": "~9.1.1",
@@ -23,6 +23,7 @@
     "@angular/router": "~9.1.1",
     "express": "^4.17.1",
     "ngx-jsonapi": "^2.2.3",
+    "ngx-toastr": "^14.0.0",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"

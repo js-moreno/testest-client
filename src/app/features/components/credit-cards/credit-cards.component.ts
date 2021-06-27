@@ -4,9 +4,12 @@ import { Router } from '@angular/router';
 import { DocumentCollection } from 'ngx-jsonapi';
 import {
   CreditCard,
+  CreditCardRead,
+  CreditCardsReadService,
   CreditCardsService,
 } from 'src/app/core/services/credit-cards/credit-cards.service';
 import { OauthService } from 'src/app/core/services/oauth/oauth.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-credit-cards',
@@ -14,17 +17,17 @@ import { OauthService } from 'src/app/core/services/oauth/oauth.service';
   styleUrls: ['./credit-cards.component.sass'],
 })
 export class CreditCardsComponent implements OnInit {
-  public creditCards: DocumentCollection<CreditCard>;
+  public creditCardRead: DocumentCollection<CreditCardRead>;
   public dataSource: MatTableDataSource<any>;
 
   constructor(
-    private creditCardsService: CreditCardsService,
+    private creditCardsReadService: CreditCardsReadService,
     private router: Router,
-    private oauthService: OauthService
+    private oauthService: OauthService,
+    private toastr: ToastrService
   ) {
-    this.creditCardsService.all().subscribe({
+    this.creditCardsReadService.all().subscribe({
       next: (creditCards) => {
-        this.creditCards = creditCards;
         this.dataSource = new MatTableDataSource(creditCards.data);
       },
       error: () => {
@@ -40,13 +43,14 @@ export class CreditCardsComponent implements OnInit {
     'truncated_number',
     'due_date',
     'is_principal',
+    'options',
   ];
 
   styleObject(bool) {
     if (bool)
       return {
         color: 'white',
-        background: 'limegreen',
+        background: '#51a351',
         padding: '2px 5px',
         ['border-radius']: '5px',
       };
@@ -60,4 +64,29 @@ export class CreditCardsComponent implements OnInit {
   }
 
   ngOnInit(): void {}
+
+  delete(creditCard: CreditCardRead) {
+    let title = `${creditCard.attributes.franchise} ${creditCard.attributes.truncated_number}`;
+    if (
+      confirm(`¿Realmente quieres eliminar la tarjeta de crédito  ${title}?`)
+    ) {
+      creditCard.delete().subscribe({
+        next: () => {
+          this.dataSource.data = this.dataSource.data.filter((value, key) => {
+            return value.id != creditCard.id;
+          });
+          this.toastr.success(
+            `La tarjeta de crédito ${title} ha sido eliminada`,
+            '¡Éxito!'
+          );
+        },
+        error: () => {
+          this.toastr.error(
+            `Algo salio mal y la tarjeta de crédito ${title} no fue eliminada`,
+            '¡Error!'
+          );
+        },
+      });
+    }
+  }
 }

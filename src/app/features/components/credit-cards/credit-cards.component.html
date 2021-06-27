@@ -26,6 +26,20 @@
                     </span>
                 </td>
             </ng-container>
+            <ng-container matColumnDef="options">
+                <mat-header-cell *matHeaderCellDef></mat-header-cell>
+                <mat-cell *matCellDef="let credit_card">
+                    <button [matMenuTriggerFor]="menu" mat-icon-button aria-label="Credit card options">
+                        <mat-icon>more_vert</mat-icon>
+                    </button>
+                    <mat-menu #menu="matMenu">
+                        <!-- <button (click)="show()" mat-menu-item> 👁️ Ver</button>
+                        <button (click)="edit()" mat-menu-item> ✏️ Editar</button> -->
+                        <button (click)="delete(credit_card)" mat-menu-item> ❌
+                            Eliminar</button>
+                    </mat-menu>
+                </mat-cell>
+            </ng-container>
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
         </table>

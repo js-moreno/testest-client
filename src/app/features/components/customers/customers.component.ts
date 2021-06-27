@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { DocumentCollection } from 'ngx-jsonapi';
+import { ToastrService } from 'ngx-toastr';
 import { OauthService } from 'src/app/core/services/oauth/oauth.service';
 import { User, UsersService } from 'src/app/core/services/users/users.service';
 @Component({
@@ -16,7 +17,8 @@ export class CustomersComponent implements OnInit {
   constructor(
     private customersService: UsersService,
     private router: Router,
-    private oauthService: OauthService
+    private oauthService: OauthService,
+    private toastr: ToastrService
   ) {
     this.customersService.all().subscribe({
       next: (customers) => {
@@ -30,7 +32,36 @@ export class CustomersComponent implements OnInit {
     });
   }
 
-  displayedColumns: string[] = ['id', 'first_name', 'last_name', 'email'];
+  displayedColumns: string[] = [
+    'id',
+    'first_name',
+    'last_name',
+    'email',
+    'options',
+  ];
 
   ngOnInit(): void {}
+
+  delete(customer: User) {
+    let title = `${customer.attributes.first_name} ${customer.attributes.last_name}`;
+    if (confirm(`¿Realmente quieres eliminar al cliente ${title}?`)) {
+      customer.delete().subscribe({
+        next: () => {
+          this.dataSource.data = this.dataSource.data.filter((value, key) => {
+            return value.id != customer.id;
+          });
+          this.toastr.success(
+            `El cliente ${title} ha sido eliminado`,
+            '¡Éxito!'
+          );
+        },
+        error: () => {
+          this.toastr.error(
+            `Algo salio mal y el cliente ${title} no fue eliminado`,
+            '¡Error!'
+          );
+        },
+      });
+    }
+  }
 }
