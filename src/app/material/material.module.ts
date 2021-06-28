@@ -16,6 +16,8 @@ import { MatMenuModule } from '@angular/material/menu';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatStepperModule } from '@angular/material/stepper';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 @NgModule({
   declarations: [],
@@ -37,6 +39,8 @@ import { MatStepperModule } from '@angular/material/stepper';
     LayoutModule,
     MatFormFieldModule,
     MatStepperModule,
+    MatDialogModule,
+    MatCheckboxModule,
   ],
   exports: [
     MatButtonModule,
@@ -55,6 +59,8 @@ import { MatStepperModule } from '@angular/material/stepper';
     LayoutModule,
     MatFormFieldModule,
     MatStepperModule,
+    MatDialogModule,
+    MatCheckboxModule,
   ],
 })
 export class MaterialModule {}

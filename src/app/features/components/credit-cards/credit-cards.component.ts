@@ -3,13 +3,13 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { DocumentCollection } from 'ngx-jsonapi';
 import {
-  CreditCard,
   CreditCardRead,
   CreditCardsReadService,
-  CreditCardsService,
 } from 'src/app/core/services/credit-cards/credit-cards.service';
 import { OauthService } from 'src/app/core/services/oauth/oauth.service';
 import { ToastrService } from 'ngx-toastr';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { CreditCardsFormComponent } from './credit-cards-form/credit-cards-form.component';
 
 @Component({
   selector: 'app-credit-cards',
@@ -24,7 +24,8 @@ export class CreditCardsComponent implements OnInit {
     private creditCardsReadService: CreditCardsReadService,
     private router: Router,
     private oauthService: OauthService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private dialog: MatDialog
   ) {
     this.creditCardsReadService.all().subscribe({
       next: (creditCards) => {
@@ -43,6 +44,7 @@ export class CreditCardsComponent implements OnInit {
     'truncated_number',
     'due_date',
     'is_principal',
+    'customer',
     'options',
   ];
 
@@ -88,5 +90,13 @@ export class CreditCardsComponent implements OnInit {
         },
       });
     }
+  }
+
+  openForm() {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+
+    this.dialog.open(CreditCardsFormComponent, dialogConfig);
   }
 }

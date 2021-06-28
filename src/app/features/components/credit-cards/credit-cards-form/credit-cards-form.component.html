@@ -1,0 +1,77 @@
+<h2 mat-dialog-title>Nueva Tarjeta de Crédito</h2>
+
+<mat-dialog-content [formGroup]="form">
+
+    <div class="row">
+        <mat-form-field>
+            <input placeholder="Número" formControlName="number" matInput required type="text">
+            <mat-error *ngIf="form.get('number').hasError('required')">Este campo es requerido
+            </mat-error>
+            <mat-error *ngIf="form.get('number').hasError('minlength')">Debe tener mímimo 16 digitos
+            </mat-error>
+            <mat-error *ngIf="form.get('number').hasError('maxlength')">Debe tener máximo 19 digitos
+            </mat-error>
+            <mat-error *ngIf="form.get('number').hasError('pattern')">Solo se admiten números
+            </mat-error>
+        </mat-form-field>
+    </div>
+
+    <div class="row">
+        <mat-form-field>
+            <mat-label>Franquicia</mat-label>
+            <mat-select formControlName="franchise" required>
+                <mat-option value="American Express">American Express</mat-option>
+                <mat-option value="Diners Club">Diners Club</mat-option>
+                <mat-option value="MasterCard">MasterCard</mat-option>
+                <mat-option value="Visa">Visa</mat-option>
+            </mat-select>
+            <mat-error *ngIf="form.get('franchise').hasError('required')">Este campo es requerido
+            </mat-error>
+        </mat-form-field>
+    </div>
+
+    <div class="row">
+        <div class="col-50">
+            <mat-form-field>
+                <input placeholder="Año" formControlName="due_date_year" matInput required type="number">
+                <mat-error *ngIf="form.get('due_date_year').hasError('required')">Este campo es requerido
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-50">
+            <mat-form-field>
+                <input placeholder="Mes" formControlName="due_date_month" matInput required type="number" min=0 max=12>
+                <mat-error *ngIf="form.get('due_date_month').hasError('required')">Este campo es requerido
+                </mat-error>
+                <mat-error *ngIf="form.get('due_date_month').hasError('min')">Debe ser mínimo 1
+                </mat-error>
+                <mat-error *ngIf="form.get('due_date_month').hasError('max')">Debe ser máximo 12
+                </mat-error>
+            </mat-form-field>
+        </div>
+    </div>
+
+    <div class="row">
+        <mat-form-field>
+            <input placeholder="Código Verificación" formControlName="verification_code" matInput required type="text">
+            <mat-error *ngIf="form.get('verification_code').hasError('required')">Este campo es requerido
+            </mat-error>
+            <mat-error *ngIf="form.get('verification_code').hasError('minlength')">Debe tener mímimo 3 digitos
+            </mat-error>
+            <mat-error *ngIf="form.get('verification_code').hasError('maxlength')">Debe tener máximo 4 digitos
+            </mat-error>
+            <mat-error *ngIf="form.get('verification_code').hasError('pattern')">Solo se admiten números
+            </mat-error>
+        </mat-form-field>
+    </div>
+
+    <div class="row">
+        <mat-checkbox formControlName="is_principal">Principal</mat-checkbox>
+    </div>
+
+</mat-dialog-content>
+
+<mat-dialog-actions>
+    <button mat-raised-button (click)="close()">Cancelar</button>
+    <button mat-raised-button color="primary" (click)="new()">Crear</button>
+</mat-dialog-actions>

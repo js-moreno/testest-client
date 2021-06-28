@@ -7,6 +7,7 @@ export class CreditCard extends Resource {
     franchise: '',
     due_date_year: '',
     due_date_month: '',
+    verification_code: '',
     is_principal: '',
   };
 }
