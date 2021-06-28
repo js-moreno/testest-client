@@ -6,14 +6,13 @@
         Clientes
     </button>
     <button mat-button routerLink="/credit-cards" routerLinkActive="active">
-        Tarjetas de Credito
+        Tarjetas
     </button>
     <span class=" spacer"></span>
     <button [matMenuTriggerFor]="menu" mat-icon-button aria-label="Session options">
         <mat-icon>person</mat-icon>
     </button>
     <mat-menu #menu="matMenu">
-        <!-- <button mat-menu-item>Perfil</button> -->
         <button (click)="logout()" mat-menu-item> ➡️ Salir</button>
     </mat-menu>
 </mat-toolbar>

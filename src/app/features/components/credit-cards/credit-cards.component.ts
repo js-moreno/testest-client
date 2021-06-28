@@ -39,7 +39,6 @@ export class CreditCardsComponent implements OnInit {
   }
 
   displayedColumns: string[] = [
-    'id',
     'franchise',
     'truncated_number',
     'due_date',
