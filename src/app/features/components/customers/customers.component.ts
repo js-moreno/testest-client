@@ -37,6 +37,8 @@ export class CustomersComponent implements OnInit {
     'first_name',
     'last_name',
     'email',
+    'phone',
+    'address',
     'options',
   ];
 

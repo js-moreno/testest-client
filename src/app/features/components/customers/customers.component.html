@@ -18,6 +18,14 @@
                 <th mat-header-cell *matHeaderCellDef> Correo </th>
                 <td mat-cell *matCellDef="let customer"> {{customer.attributes.email}} </td>
             </ng-container>
+            <ng-container matColumnDef="phone">
+                <th mat-header-cell *matHeaderCellDef> Teléfono </th>
+                <td mat-cell *matCellDef="let customer"> {{customer.attributes.phone}} </td>
+            </ng-container>
+            <ng-container matColumnDef="address">
+                <th mat-header-cell *matHeaderCellDef> Dirección </th>
+                <td mat-cell *matCellDef="let customer"> {{customer.attributes.address}} </td>
+            </ng-container>
             <ng-container matColumnDef="options">
                 <mat-header-cell *matHeaderCellDef></mat-header-cell>
                 <mat-cell *matCellDef="let customer">
@@ -25,8 +33,6 @@
                         <mat-icon>more_vert</mat-icon>
                     </button>
                     <mat-menu #menu="matMenu">
-                        <!-- <button (click)="show()" mat-menu-item> 👁️ Ver</button>
-                        <button (click)="edit()" mat-menu-item> ✏️ Editar</button> -->
                         <button (click)="delete(customer)" mat-menu-item> ❌
                             Eliminar</button>
                     </mat-menu>
