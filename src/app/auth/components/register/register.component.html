@@ -8,73 +8,59 @@
         </mat-card-header>
         <mat-card-content>
             <div class=" row">
-                <div class="col-xs">
-                    <mat-form-field>
-                        <input placeholder="Nombre" formControlName="first_name" matInput required type="text">
-                        <mat-error *ngIf="form.get('first_name').hasError('required')">Este campo es requerido
-                        </mat-error>
+                <mat-form-field>
+                    <input placeholder="Nombre" formControlName="first_name" matInput required type="text">
+                    <mat-error *ngIf="form.get('first_name').hasError('required')">Este campo es requerido
+                    </mat-error>
 
-                    </mat-form-field>
-                </div>
+                </mat-form-field>
             </div>
             <div class="row">
-                <div class="col-xs">
-                    <mat-form-field>
-                        <input placeholder="Apellido" formControlName="last_name" matInput required type="text">
-                        <mat-error *ngIf="form.get('last_name').hasError('required')">Este campo es requerido
-                        </mat-error>
-                    </mat-form-field>
-                </div>
+                <mat-form-field>
+                    <input placeholder="Apellido" formControlName="last_name" matInput required type="text">
+                    <mat-error *ngIf="form.get('last_name').hasError('required')">Este campo es requerido
+                    </mat-error>
+                </mat-form-field>
             </div>
             <div class="row">
-                <div class="col-xs">
-                    <mat-form-field>
-                        <input placeholder="Correo" formControlName="email" matInput required type="email">
-                        <mat-error *ngIf="form.get('email').hasError('required')">Este campo es requerido</mat-error>
-                        <mat-error *ngIf="form.get('email').hasError('email')">Debes ingresar un correo electónico
-                        </mat-error>
-                    </mat-form-field>
-                </div>
+                <mat-form-field>
+                    <input placeholder="Correo" formControlName="email" matInput required type="email">
+                    <mat-error *ngIf="form.get('email').hasError('required')">Este campo es requerido</mat-error>
+                    <mat-error *ngIf="form.get('email').hasError('email')">Debes ingresar un correo electónico
+                    </mat-error>
+                </mat-form-field>
             </div>
             <div class="row">
-                <div class="col-xs">
-                    <mat-form-field>
-                        <input placeholder="Teléfono" formControlName="phone" matInput type="text">
-                        <mat-error *ngIf="form.get('phone').hasError('pattern')">Solo se admiten números
-                        </mat-error>
-                    </mat-form-field>
-                </div>
+                <mat-form-field>
+                    <input placeholder="Teléfono" formControlName="phone" matInput type="text">
+                    <mat-error *ngIf="form.get('phone').hasError('pattern')">Solo se admiten números
+                    </mat-error>
+                </mat-form-field>
             </div>
             <div class="row">
-                <div class="col-xs">
-                    <mat-form-field>
-                        <input placeholder="Dirección" formControlName="address" matInput type="text">
-                    </mat-form-field>
-                </div>
+                <mat-form-field>
+                    <input placeholder="Dirección" formControlName="address" matInput type="text">
+                </mat-form-field>
             </div>
             <div class="row">
-                <div class="col-xs">
-                    <mat-form-field>
-                        <input placeholder="Contraseña" formControlName="password" matInput required type="password">
-                        <mat-error *ngIf="form.get('password').hasError('required')">Este campo es requerido</mat-error>
-                        <mat-error *ngIf="form.get('password').hasError('minlength')">Debe contener
-                            mínimo
-                            8 caracteres</mat-error>
-                    </mat-form-field>
-                </div>
+                <mat-form-field>
+                    <input placeholder="Contraseña" formControlName="password" matInput required type="password">
+                    <mat-error *ngIf="form.get('password').hasError('required')">Este campo es requerido</mat-error>
+                    <mat-error *ngIf="form.get('password').hasError('minlength')">Debe contener
+                        mínimo
+                        8 caracteres</mat-error>
+                </mat-form-field>
             </div>
             <div class="row">
-                <div class="col-xs">
-                    <mat-form-field>
-                        <input placeholder="Confirmación Contraseña" formControlName="password_confirmation" matInput
-                            required type="password">
-                        <mat-error *ngIf="form.get('password_confirmation').hasError('required')">Este campo es
-                            requerido
-                        </mat-error>
-                        <mat-error *ngIf="form.get('password_confirmation').errors.confirmedValidator">Contraseñas no
-                            coinciden</mat-error>
-                    </mat-form-field>
-                </div>
+                <mat-form-field>
+                    <input placeholder="Confirmación Contraseña" formControlName="password_confirmation" matInput
+                        required type="password">
+                    <mat-error *ngIf="form.get('password_confirmation').hasError('required')">Este campo es
+                        requerido
+                    </mat-error>
+                    <mat-error *ngIf="form.get('password_confirmation').errors.confirmedValidator">Contraseñas no
+                        coinciden</mat-error>
+                </mat-form-field>
             </div>
         </mat-card-content>
         <mat-card-actions>
